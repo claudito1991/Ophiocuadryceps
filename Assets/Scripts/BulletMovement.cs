@@ -1,21 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    [SerializeField] private float fungiBulletForce = 2f;
-    [SerializeField] private Rigidbody2D bulletRb;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private float m_Speed = 20f;
+    private Rigidbody2D rb2d;
+
+    private void Awake() {
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        bulletRb.velocity = transform.right * fungiBulletForce;
-        //transform.Translate(transform.right * Time.deltaTime * fungiBulletSpeed , Space.Self);
+        rb2d.velocity = transform.right * m_Speed;
     }
 }
