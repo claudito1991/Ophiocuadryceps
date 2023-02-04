@@ -8,7 +8,7 @@ public class FungiMind : MonoBehaviour {
     public static bool HasAnyPossessedAnts() {
         return PossessedAnts.Count > 0;
     }
-    
+
     public static Ant GetFirstPossessedAnt() {
         return PossessedAnts.FirstOrDefault();
     }
@@ -20,4 +20,8 @@ public class FungiMind : MonoBehaviour {
     public static void UnregisterPossessedAnt(Ant ant) {
         PossessedAnts.Remove(ant);
     }
+
+    public static int GetPossessedAntCount() => PossessedAnts.Count;
+
+    public static Ant GetAnt(int i) => PossessedAnts[i];
 }
