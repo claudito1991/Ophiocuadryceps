@@ -38,4 +38,5 @@ public class Ant : MonoBehaviour {
     }
 
     public Vector3 GetPosition() => transform.position;
+
 }
