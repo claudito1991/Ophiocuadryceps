@@ -20,6 +20,12 @@ public class Ant : MonoBehaviour {
             Possess();
     }
 
+    private void OnDestroy() {
+        if (IsPossessed) {
+            FungiMind.UnregisterPossessedAnt(this);
+        }
+    }
+
     public void OnBulletHit() {
         if (IsPossessed) return;
 
@@ -31,6 +37,9 @@ public class Ant : MonoBehaviour {
     private void Possess() {
         if (!IsPossessed) {
             IsPossessed = true;
+            FungiMind.RegisterPossessedAnt(this);
         }
     }
+
+    public Vector3 GetPosition() => transform.position;
 }

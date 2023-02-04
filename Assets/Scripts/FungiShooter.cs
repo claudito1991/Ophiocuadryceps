@@ -8,22 +8,28 @@ public class FungiShooter : MonoBehaviour {
     private Camera mainCamera;
 
     private Ant leaderAnt;
+
+    private bool GetHasLeaderAnt() => leaderAnt && leaderAnt.IsPossessed;
     
     private void Start() {
         mainCamera = Camera.main;
     }
 
     private void Update() {
-        if (leaderAnt == null && !leaderAnt.IsPossessed && FungiMind.HasAnyPossessedAnts()) {
+        if (!GetHasLeaderAnt() && FungiMind.HasAnyPossessedAnts()) {
             leaderAnt = FungiMind.GetFirstPossessedAnt();
         }
         
-        if(leaderAnt == null) return;
+        if(!GetHasLeaderAnt()) return;
 
+        UpdateLocation();
+        
         if (Input.GetMouseButtonDown(0)) {
             Shoot();
         }
     }
+
+    private void UpdateLocation() => transform.position = leaderAnt.GetPosition();
 
     private Vector2 GetProjectedMousePosition() {
         Plane plane = new Plane(Vector3.back, transform.position);
@@ -34,7 +40,6 @@ public class FungiShooter : MonoBehaviour {
     }
 
     private void Shoot() {
-        
         var target = GetProjectedMousePosition();
         Vector2 shooterPosition = transform.position;
         var direction = (target - shooterPosition).normalized;
