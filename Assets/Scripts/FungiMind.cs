@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetMousePosition : MonoBehaviour
+public class FungiMind : MonoBehaviour
 {
     [SerializeField] private GameObject ant;
     [SerializeField] private Vector2 shooterPosition;
