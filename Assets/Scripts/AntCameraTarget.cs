@@ -37,7 +37,7 @@ public class AntCameraTarget : MonoBehaviour {
     {
         var previousSize = vmCamera.m_Lens.OrthographicSize;
         
-        var targetSize = count * 5f * sizePercentChangePerAnt;
+        var targetSize = count * cameraMinSize * sizePercentChangePerAnt;
         if(targetSize > cameraMinSize)
         {
             vmCamera.m_Lens.OrthographicSize = Mathf.Lerp(previousSize, targetSize, vmCamChangeSizeSpeed*Time.deltaTime);
