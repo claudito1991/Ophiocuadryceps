@@ -7,11 +7,16 @@ public class AntDeath : MonoBehaviour {
     [SerializeField] private float m_MaxLifespan;
 
     void Start() {
-        ant = GetComponent<Ant>();
+        ant = GetComponent<Ant>();  
     }
 
+    void OnEnable()
+    {
+       StartCoroutine(TimerXD());
+    }
     IEnumerator TimerXD() {
         yield return new WaitForSeconds(Random.Range(m_MinLifespan, m_MaxLifespan));
+        Debug.Log("muerte");
         Destroy(gameObject);
     }
 }
