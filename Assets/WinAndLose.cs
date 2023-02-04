@@ -21,12 +21,13 @@ public class WinAndLose : MonoBehaviour
     {
         if(other.GetComponent<Ant>().IsPossessed)
         {
-            Debug.Log("You WIN");
+           RemoveControlFromPlayer(other.gameObject);
         }
     }
 
     private void RemoveControlFromPlayer(GameObject playerObject)
     {
-        
+        playerObject.GetComponent<Ant>().enabled = false;
+        playerObject.GetComponent<AntMovement>().enabled = false;
     }
 }
