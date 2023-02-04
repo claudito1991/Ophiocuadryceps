@@ -24,4 +24,5 @@ public class FungiMind : MonoBehaviour {
     public static int GetPossessedAntCount() => PossessedAnts.Count;
 
     public static Ant GetAnt(int i) => PossessedAnts[i];
+
 }

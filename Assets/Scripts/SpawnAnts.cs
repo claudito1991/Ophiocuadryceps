@@ -7,6 +7,7 @@ public class SpawnAnts : MonoBehaviour
 {
     [SerializeField] private GameObject antToSpawn;
     [SerializeField]private float cooldown = 5f;
+    [SerializeField] private Vector3 spawnPosition;
     private float spawnTime;
     
     // Start is called before the first frame update
@@ -29,17 +30,16 @@ public class SpawnAnts : MonoBehaviour
     private void SpawnOverTime()
     {
         GameObject ant = Instantiate(antToSpawn, this.transform);
-        var spawnPosition = transform.position;
-        var offset = transform.right;
-        ant.transform.position = spawnPosition + offset * RandomPosition();
+        spawnPosition = transform.position;
+        var offset = transform.up;
+        ant.transform.position = spawnPosition + offset* RandomPosition();
     }
 
 
     private float RandomPosition()
     {
-        float x;
-        
-        x = Random.Range(-5f,5f);
-        return x;
+        float y;
+        y = Random.Range(-5f,5f);
+        return y;
     }
 }
