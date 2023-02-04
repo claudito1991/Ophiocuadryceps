@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WinAndLose : MonoBehaviour
 {
+    [SerializeField] private BoxCollider2D winCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,14 @@ public class WinAndLose : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Collide");
+        if(other.GetComponent<Ant>().IsPossessed)
+        {
+            Debug.Log("You WIN");
+        }
     }
 }
