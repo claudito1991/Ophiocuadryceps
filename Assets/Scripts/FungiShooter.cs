@@ -1,20 +1,25 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class FungiMind : MonoBehaviour {
-    [FormerlySerializedAs("ant")] [SerializeField]
-    private GameObject m_StarterAnt;
-
+public class FungiShooter : MonoBehaviour {
     [FormerlySerializedAs("bulletFungi")] [SerializeField]
     private GameObject m_BulletPrefab;
 
     private Camera mainCamera;
 
+    private Ant leaderAnt;
+    
     private void Start() {
         mainCamera = Camera.main;
     }
 
     private void Update() {
+        if (leaderAnt == null && !leaderAnt.IsPossessed && FungiMind.HasAnyPossessedAnts()) {
+            leaderAnt = FungiMind.GetFirstPossessedAnt();
+        }
+        
+        if(leaderAnt == null) return;
+
         if (Input.GetMouseButtonDown(0)) {
             Shoot();
         }
@@ -29,8 +34,9 @@ public class FungiMind : MonoBehaviour {
     }
 
     private void Shoot() {
+        
         var target = GetProjectedMousePosition();
-        Vector2 shooterPosition = m_StarterAnt.transform.position;
+        Vector2 shooterPosition = transform.position;
         var direction = (target - shooterPosition).normalized;
         var angle = Mathf.Atan2(direction.y, direction.x);
         Instantiate(m_BulletPrefab, shooterPosition, Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg));
