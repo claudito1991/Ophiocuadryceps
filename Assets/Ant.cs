@@ -12,7 +12,7 @@ public class Ant : MonoBehaviour {
     private void Awake() {
         movement = GetComponent<AntMovement>();
         antDeath = GetComponent<AntDeath>();
-        antDeath.enabled =true;
+        
     }
 
     private void Start() {
@@ -40,6 +40,7 @@ public class Ant : MonoBehaviour {
     public void Possess() {
         if (!IsPossessed) {
             IsPossessed = true;
+            antDeath.enabled =true;
             FungiMind.RegisterPossessedAnt(this);
         }
     }

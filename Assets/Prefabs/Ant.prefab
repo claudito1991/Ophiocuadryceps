@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6bfd5e5e0f9c8479d0bfd9660a95f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StartsPossessed: 0
   m_StartingHitPoints: 3
 --- !u!114 &5391891329358765630
 MonoBehaviour:
@@ -192,9 +191,10 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5391891329358765631}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 635cf11cc5180174cbad2d4ce28c7fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ant: {fileID: 3602189836942174114}
+  m_MinLifespan: 2
+  m_MaxLifespan: 6
