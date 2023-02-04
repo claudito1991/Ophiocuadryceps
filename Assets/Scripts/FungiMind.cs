@@ -1,43 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class FungiMind : MonoBehaviour
-{
-    [SerializeField] private GameObject ant;
-    [SerializeField] private Vector2 shooterPosition;
-    [SerializeField] private GameObject bulletFungi;
-    // Start is called before the first frame update
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            FungiFire();
+public class FungiMind : MonoBehaviour {
+    [FormerlySerializedAs("ant")] [SerializeField]
+    private GameObject m_StarterAnt;
+
+    [FormerlySerializedAs("bulletFungi")] [SerializeField]
+    private GameObject m_BulletPrefab;
+
+    private Camera mainCamera;
+
+    private void Start() {
+        mainCamera = Camera.main;
+    }
+
+    private void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            Shoot();
         }
     }
 
-    private Vector2 GetMousePosition2D()
-    {
-            Plane plane = new Plane(Vector3.back ,Vector3.zero);
-            var Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            plane.Raycast(Ray, out float distance);
-            var point = Ray.origin + Ray.direction * distance;
-            return point;
+    private Vector2 GetProjectedMousePosition() {
+        Plane plane = new Plane(Vector3.back, transform.position);
+        var pointerRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        plane.Raycast(pointerRay, out var distance);
+        var point = pointerRay.origin + pointerRay.direction * distance;
+        return point;
     }
 
-    public void FungiFire()
-    {
-        var target = GetMousePosition2D();
-        shooterPosition = ant.transform.position;
+    private void Shoot() {
+        var target = GetProjectedMousePosition();
+        Vector2 shooterPosition = m_StarterAnt.transform.position;
         var direction = (target - shooterPosition).normalized;
-        Debug.DrawLine(target,target + direction, Color.green, 2f );
         var angle = Mathf.Atan2(direction.y, direction.x);
-        Instantiate(bulletFungi, shooterPosition, Quaternion.Euler(0f,0f, angle * Mathf.Rad2Deg));
-        Debug.Log($"{angle} - { (angle * Mathf.Rad2Deg)}");
+        Instantiate(m_BulletPrefab, shooterPosition, Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg));
     }
-
-
-
 }
-
