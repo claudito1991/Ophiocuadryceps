@@ -14,10 +14,7 @@ public class AntDeath : MonoBehaviour
     }
     void Update()
     {
-        if(ant.IsPossessed && !ant.IsFirstAnt())
-        {
-            Destroy(this.gameObject);
-        }
+
     }
 
 }
