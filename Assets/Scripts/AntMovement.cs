@@ -33,4 +33,9 @@ public class AntMovement : MonoBehaviour {
 
         rb2d.velocity = transform.right * Mathf.Lerp(m_MinSpeed, m_MaxSpeed, speedBlend);
     }
+
+    void OnDisable()
+    {
+        Destroy(rb2d);
+    }
 }
