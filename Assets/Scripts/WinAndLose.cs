@@ -18,31 +18,17 @@ public class WinAndLose : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckForZeroInfected();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+
     if(other.GetComponent<Ant>().IsPossessed)
-      {
-        infectedAnts = GameObject.FindGameObjectsWithTag("Ant");
-      }
-
-            
-    foreach (GameObject infectedAnt in infectedAnts)
     {
-    if(infectedAnt != null)
-    {
-        RemoveControlFromPlayer(infectedAnt);
-    }
-    
-            
+        EverythingStop();
     }
 
-        foreach (GameObject spawn in spawns)
-        {
-            spawn.SetActive(false);
-        }
     }
 
 
@@ -51,5 +37,33 @@ public class WinAndLose : MonoBehaviour
     {
         playerObject.GetComponent<AntMovement>().enabled = false;
         playerObject.GetComponent<AntDeath>().enabled = false;
+    }
+
+    private void EverythingStop()
+    {
+        infectedAnts = GameObject.FindGameObjectsWithTag("Ant");
+        foreach (GameObject infectedAnt in infectedAnts)
+        {
+        if(infectedAnt != null)
+        {
+            RemoveControlFromPlayer(infectedAnt);
+        }
+        
+                
+        }
+
+        foreach (GameObject spawn in spawns)
+        {
+            spawn.SetActive(false);
+        }
+    }
+
+    private void CheckForZeroInfected()
+    {
+        if (!FungiMind.HasAnyPossessedAnts())
+        {
+            EverythingStop();
+        }
+        
     }
 }
