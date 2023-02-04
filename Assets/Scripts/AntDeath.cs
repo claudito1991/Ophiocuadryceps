@@ -15,6 +15,7 @@ public class AntDeath : MonoBehaviour {
     void OnEnable()
     {
        coroutine = StartCoroutine(TimerXD());
+       DeathSpeedManager.OnPopulationGrow += ReduceDeathTime;
     }
     IEnumerator TimerXD() {
         yield return new WaitForSeconds(Random.Range(m_MinLifespan, m_MaxLifespan));
@@ -28,5 +29,17 @@ public class AntDeath : MonoBehaviour {
         {
             StopCoroutine(coroutine);
         }
+        DeathSpeedManager.OnPopulationGrow -= ReduceDeathTime;
     }
+
+    public void ReduceDeathTime(float aumountDecrease)
+    {
+        Debug.Log(aumountDecrease);
+        m_MaxLifespan = m_MaxLifespan * aumountDecrease;
+        m_MinLifespan = m_MinLifespan * aumountDecrease;
+    }
+
+
+
+
 }
