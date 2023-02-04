@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class Ant : MonoBehaviour {
+    [SerializeField] private bool m_StartsPossessed = false;
     [SerializeField] private int m_StartingHitPoints = 3;
 
     public bool IsPossessed { get; private set; }
@@ -14,6 +15,9 @@ public class Ant : MonoBehaviour {
 
     private void Start() {
         hitPoints = m_StartingHitPoints;
+        
+        if(m_StartsPossessed)
+            Possess();
     }
 
     public void OnBulletHit() {
