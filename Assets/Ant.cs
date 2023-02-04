@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Ant : MonoBehaviour {
     [SerializeField] private int m_StartingHitPoints = 3;
+    private AntDeath antDeath;
 
     public bool IsPossessed { get; private set; }
 
@@ -10,10 +11,14 @@ public class Ant : MonoBehaviour {
 
     private void Awake() {
         movement = GetComponent<AntMovement>();
+        antDeath = GetComponent<AntDeath>();
+        antDeath.enabled =true;
     }
 
     private void Start() {
         hitPoints = m_StartingHitPoints;
+        
+        
     }
 
     private void OnDestroy() {
@@ -21,6 +26,8 @@ public class Ant : MonoBehaviour {
             FungiMind.UnregisterPossessedAnt(this);
         }
     }
+
+
 
     public void OnBulletHit() {
         if (IsPossessed) return;

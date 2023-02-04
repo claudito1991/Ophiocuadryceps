@@ -873,6 +873,18 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1692710313, guid: 3fd727a592450e5498062a7e61439c07, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692710313, guid: 3fd727a592450e5498062a7e61439c07, type: 3}
+      propertyPath: m_MaxLifespan
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692710313, guid: 3fd727a592450e5498062a7e61439c07, type: 3}
+      propertyPath: m_MinLifespan
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3602189836942174114, guid: 3fd727a592450e5498062a7e61439c07,
         type: 3}
       propertyPath: m_StartsPossessed
