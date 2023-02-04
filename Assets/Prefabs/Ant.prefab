@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hormiga: {fileID: 5391891329358765631}
-  antSpeed: 0.3
+  antSpeed: 2
   antRb: {fileID: 4011065760915064419}
 --- !u!50 &4011065760915064419
 Rigidbody2D:
