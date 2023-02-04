@@ -42,4 +42,9 @@ public class Ant : MonoBehaviour {
     }
 
     public Vector3 GetPosition() => transform.position;
+
+    public bool IsFirstAnt ()
+    {
+        return m_StartsPossessed;
+    }
 }

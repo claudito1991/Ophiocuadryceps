@@ -14,9 +14,9 @@ public class AntDeath : MonoBehaviour
     }
     void Update()
     {
-        if(ant.IsPossessed)
+        if(ant.IsPossessed && !ant.IsFirstAnt())
         {
-            Debug.Log("Poseida");
+            Destroy(this.gameObject);
         }
     }
 
