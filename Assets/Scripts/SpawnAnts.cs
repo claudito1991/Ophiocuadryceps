@@ -7,7 +7,10 @@ public class SpawnAnts : MonoBehaviour
 {
     [SerializeField] private GameObject antToSpawn;
     [SerializeField]private float cooldown = 5f;
-    [SerializeField] private Vector3 spawnPosition;
+    private Vector3 spawnPosition;
+    [SerializeField] private float rangeSpawnValue;
+
+
     private float spawnTime;
     
     // Start is called before the first frame update
@@ -41,7 +44,7 @@ public class SpawnAnts : MonoBehaviour
     private float RandomPosition()
     {
         float y;
-        y = Random.Range(-5f,5f);
+        y = Random.Range(-rangeSpawnValue,rangeSpawnValue);
         return y;
     }
 }
