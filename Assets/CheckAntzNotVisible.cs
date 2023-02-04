@@ -9,7 +9,7 @@ public class CheckAntzNotVisible : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var antVisible = GetComponent<Renderer>().isVisible;
+        
         StartCoroutine(TimerXD());
     }
 
@@ -22,5 +22,14 @@ public class CheckAntzNotVisible : MonoBehaviour
         IEnumerator TimerXD() {
         yield return new WaitForSeconds(timeToWaitIfNotConverted);
         Destroy(gameObject);
+    }
+
+    private void CheckIfAntVisible()
+    {
+        var antVisible = GetComponent<Renderer>().isVisible;
+        if (!antVisible) 
+        {
+            
+        }
     }
 }
