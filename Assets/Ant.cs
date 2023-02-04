@@ -34,7 +34,7 @@ public class Ant : MonoBehaviour {
             Possess();
     }
 
-    private void Possess() {
+    public void Possess() {
         if (!IsPossessed) {
             IsPossessed = true;
             FungiMind.RegisterPossessedAnt(this);

@@ -1,9 +1,17 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class FungiMind : MonoBehaviour {
     private static readonly List<Ant> PossessedAnts = new();
+
+    private void Start() {
+        var firstAnt = FindObjectOfType<Ant>();
+        if (firstAnt) {
+            firstAnt.Possess();
+        }
+    }
 
     public static bool HasAnyPossessedAnts() {
         return PossessedAnts.Count > 0;
@@ -24,5 +32,4 @@ public class FungiMind : MonoBehaviour {
     public static int GetPossessedAntCount() => PossessedAnts.Count;
 
     public static Ant GetAnt(int i) => PossessedAnts[i];
-
 }
