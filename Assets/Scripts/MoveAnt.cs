@@ -7,7 +7,6 @@ public class MoveAnt : MonoBehaviour
 {
     [SerializeField] private GameObject hormiga;
     [SerializeField] private float antSpeed = 0.5f;
-
     [SerializeField] private Rigidbody2D antRb;
     void Awake()
     {
@@ -22,7 +21,7 @@ public class MoveAnt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        antRb.velocity = transform.up;
+        antRb.velocity = transform.up * antSpeed;
     }
 
 }
