@@ -6,16 +6,17 @@ public class AntCameraTarget : MonoBehaviour {
 
         int count = FungiMind.GetPossessedAntCount();
 
-        Vector3 position = Vector3.zero;
+        Vector2 min = Vector2.positiveInfinity;
+        Vector2 max = Vector2.negativeInfinity;
 
         for (int i = 0; i < count; i++) {
             var ant = FungiMind.GetAnt(i);
 
-            position += ant.GetPosition();
+            var position = ant.GetPosition();
+            min = Vector2.Min(min, position);
+            max = Vector2.Max(max, position);
         }
 
-        position /= count;
-
-        transform.position = position;
+        transform.position = (min + max) / 2;
     }
 }
