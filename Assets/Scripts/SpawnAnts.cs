@@ -29,10 +29,12 @@ public class SpawnAnts : MonoBehaviour
 
     private void SpawnOverTime()
     {
-        GameObject ant = Instantiate(antToSpawn, this.transform);
+        GameObject ant = Instantiate(antToSpawn);
         spawnPosition = transform.position;
         var offset = transform.up;
         ant.transform.position = spawnPosition + offset* RandomPosition();
+        Quaternion rotationOfTheParentOfTheParent = transform.rotation;
+        ant.transform.rotation = rotationOfTheParentOfTheParent;
     }
 
 

@@ -19,10 +19,7 @@ public class WinAndLose : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.GetComponent<Ant>().IsPossessed)
-        {
-            RemoveControlFromPlayer(other.gameObject);
-        }
+        
     }
 
     void OnTriggerStay(Collider other)
