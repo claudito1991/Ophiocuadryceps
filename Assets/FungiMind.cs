@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class FungiMind : MonoBehaviour {
@@ -17,9 +15,7 @@ public class FungiMind : MonoBehaviour {
         return PossessedAnts.Count > 0;
     }
 
-    public static Ant GetFirstPossessedAnt() {
-        return PossessedAnts.FirstOrDefault();
-    }
+    public static Ant GetLeaderAnt() => PossessedAnts.Count > 0 ? PossessedAnts[0] : null;
 
     public static void RegisterPossessedAnt(Ant ant) {
         PossessedAnts.Add(ant);
