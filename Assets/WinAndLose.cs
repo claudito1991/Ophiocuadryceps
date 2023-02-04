@@ -19,10 +19,14 @@ public class WinAndLose : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collide");
         if(other.GetComponent<Ant>().IsPossessed)
         {
             Debug.Log("You WIN");
         }
+    }
+
+    private void RemoveControlFromPlayer(GameObject playerObject)
+    {
+        
     }
 }
