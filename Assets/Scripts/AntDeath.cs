@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AntDeath : MonoBehaviour {
     private Ant ant;
     [SerializeField] private float m_MinLifespan;
     [SerializeField] private float m_MaxLifespan;
-
+    [Space]
+    [SerializeField] private GameObject m_DestroyEffect;
     private Coroutine coroutine;
 
     void Start() {
@@ -39,7 +41,7 @@ public class AntDeath : MonoBehaviour {
         m_MinLifespan = m_MinLifespan * aumountDecrease;
     }
 
-
-
-
+    private void OnDestroy() {
+        Instantiate(m_DestroyEffect, transform.position, Quaternion.identity);
+    }
 }
