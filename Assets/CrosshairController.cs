@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(200)]
 public class CrosshairController : MonoBehaviour {
@@ -17,5 +18,19 @@ public class CrosshairController : MonoBehaviour {
         var point = pointerRay.origin + pointerRay.direction * enter;
 
         m_CrosshairTransform.position = point;
+
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
+
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+                Cursor.visible = true;
+        }
+
+        else
+        {
+                Cursor.visible = false;
+        }
+
+        
     }
 }
