@@ -6,7 +6,7 @@ public class CheckAntzNotVisible : MonoBehaviour
 {
     private bool antVisible;
     [SerializeField] private float timeToWaitIfNotConverted = 3f;
-    [SerializeField]private Ant ant;
+    private Ant ant;
     [SerializeField]private bool readyToDie;
     // Start is called before the first frame update
     void Start()

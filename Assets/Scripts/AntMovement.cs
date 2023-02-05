@@ -6,12 +6,18 @@ public class AntMovement : MonoBehaviour {
     [SerializeField] private float m_MinSpeed = 0.8f;
     [SerializeField] private float m_MaxSpeed =2.0f;
 
+    [SerializeField] private float speedModifier;
+
     private Ant ant;
     private Rigidbody2D rb2d;
+
+    [SerializeField]private bool antInSapBool;
 
     private void Awake() {
         ant = GetComponent<Ant>();
         rb2d = GetComponent<Rigidbody2D>();
+        antInSapBool = false;
+        speedModifier=1f;
     }
 
     private void Update() {
@@ -31,11 +37,29 @@ public class AntMovement : MonoBehaviour {
             speedBlend = Mathf.Clamp01(normalizedDelta);
         }
 
-        rb2d.velocity = transform.right * Mathf.Lerp(m_MinSpeed, m_MaxSpeed, speedBlend);
+        if(antInSapBool)
+        {
+            speedModifier = 0.5f;
+        }
+
+        else
+        {
+            speedModifier = 1f;
+        }
+
+        var speedLerp = Mathf.Lerp(m_MinSpeed, m_MaxSpeed, speedBlend);
+        rb2d.velocity = transform.right * speedLerp * speedModifier;
+
+       
     }
 
     void OnDisable()
     {
         Destroy(rb2d);
+    }
+
+    public bool AntInSap(bool state)
+    {
+        return antInSapBool = state;
     }
 }

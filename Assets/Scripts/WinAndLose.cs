@@ -7,7 +7,7 @@ using TMPro;
 public class WinAndLose : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D winCollider;
-    [SerializeField] private GameObject[] spawns;
+    [SerializeField] private GameObject antSpawnRig;
     private GameObject[] infectedAnts;
 
     [SerializeField] private GameObject winText;
@@ -28,11 +28,13 @@ public class WinAndLose : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-    if(other.GetComponent<Ant>().IsPossessed)
-    {
-        EverythingStop();
-        winText.SetActive(true);
-    }
+        
+        if(other.GetComponent<Ant>().IsPossessed)
+        {
+
+            EverythingStop();
+            winText.SetActive(true);
+        }
 
     }
 
@@ -57,10 +59,8 @@ public class WinAndLose : MonoBehaviour
                 
         }
 
-        foreach (GameObject spawn in spawns)
-        {
-            spawn.SetActive(false);
-        }
+            antSpawnRig.SetActive(false);
+   
     }
 
     private void CheckForZeroInfected()
