@@ -3,22 +3,20 @@ using UnityEngine;
 public class Ant : MonoBehaviour {
     [SerializeField] private int m_StartingHitPoints = 3;
     private AntDeath antDeath;
-
-    public bool IsPossessed { get; private set; }
-
     private AntMovement movement;
+    private AntSFX sfx;
     private int hitPoints;
+    
+    public bool IsPossessed { get; private set; }
 
     private void Awake() {
         movement = GetComponent<AntMovement>();
         antDeath = GetComponent<AntDeath>();
-        
+        sfx = GetComponent<AntSFX>();
     }
 
     private void Start() {
         hitPoints = m_StartingHitPoints;
-        
-        
     }
 
     private void OnDestroy() {
@@ -41,6 +39,7 @@ public class Ant : MonoBehaviour {
         if (!IsPossessed) {
             IsPossessed = true;
             antDeath.enabled =true;
+            sfx.PlayPossessionSFX();
             FungiMind.RegisterPossessedAnt(this);
         }
     }
