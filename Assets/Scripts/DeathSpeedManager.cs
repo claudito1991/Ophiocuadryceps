@@ -26,7 +26,7 @@ public class DeathSpeedManager : MonoBehaviour
     private void AntQuantityTracker()
     {
         var amountDecrease = (100f - FungiMind.GetPossessedAntCount())/100f;
-        Debug.Log(amountDecrease);
+        Debug.Log("amount " + amountDecrease+ " count " + FungiMind.GetPossessedAntCount());
         OnPopulationGrow?.Invoke(amountDecrease);
     }
 
