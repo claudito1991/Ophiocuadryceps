@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7048461722084266416}
   - component: {fileID: 7048461722084266422}
   - component: {fileID: 7048461722084266421}
+  - component: {fileID: 4177259973006038225}
   m_Layer: 0
   m_Name: Sap
   m_TagString: Untagged
@@ -146,3 +147,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3c895833143a14583cb8194f84ca46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &4177259973006038225
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048461722084266420}
+  m_Enabled: 1
+  m_SortingLayerID: 356492001
+  m_SortingLayer: -1
+  m_SortingOrder: 10
+  m_SortAtRoot: 0
