@@ -11,8 +11,13 @@ public class AntDeath : MonoBehaviour {
 
     private void OnEnable()
     {
-       coroutine = StartCoroutine(TimerXd());
        DeathSpeedManager.OnPopulationGrow += ReduceDeathTime;
+       
+    }
+
+    void Start()
+    {
+        coroutine = StartCoroutine(TimerXd());
     }
 
     private IEnumerator TimerXd() {
