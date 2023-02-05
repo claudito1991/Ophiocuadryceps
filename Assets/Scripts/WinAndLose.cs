@@ -25,19 +25,14 @@ public class WinAndLose : MonoBehaviour
         CheckForZeroInfected();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
-        
-        if(other.GetComponent<Ant>().IsPossessed)
-        {
-
-            EverythingStop();
-            winText.SetActive(true);
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (!other.CompareTag("Ant") || !other.GetComponent<Ant>().IsPossessed) {
+            return;
         }
-
+        
+        EverythingStop();
+        winText.SetActive(true);
     }
-
 
 
     private void RemoveControlFromPlayer(GameObject playerObject)
