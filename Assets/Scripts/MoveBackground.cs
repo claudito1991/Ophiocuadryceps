@@ -16,6 +16,6 @@ public class MoveBackground : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward  * Time.deltaTime * backGroundSpeed, Space.Self);
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
     }
 }
