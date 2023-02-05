@@ -22,8 +22,7 @@ public class AntDeath : MonoBehaviour {
 
     private IEnumerator TimerXd() {
         yield return new WaitForSeconds(Random.Range(m_MinLifespan, m_MaxLifespan));
-        Instantiate(m_DestroyEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        Kill();
     }
 
     private void OnDisable()
@@ -39,5 +38,14 @@ public class AntDeath : MonoBehaviour {
     {
         m_MaxLifespan *= multiplier;
         m_MinLifespan *= multiplier;
+    }
+
+    public void ForceKill() {
+        Kill();
+    }
+
+    private void Kill() {
+        Instantiate(m_DestroyEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
