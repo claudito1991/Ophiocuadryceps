@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour
         Vector3 spawnPosition = baseSpawnPosition + positionOffset;
         
         var viewportPosition = mainCamera.WorldToViewportPoint(spawnPosition);
-        viewportPosition.y = Mathf.Max(1.1f, viewportPosition.y);
+        viewportPosition.y = Mathf.Max(1.3f, viewportPosition.y);
 
         spawnPosition = mainCamera.ViewportToWorldPoint(viewportPosition);
 
@@ -45,7 +45,16 @@ public class Spawner : MonoBehaviour
         Quaternion rotationOffset = Quaternion.Euler(0, 0, Random.Range(-m_AngleVariance, m_AngleVariance));
         Quaternion spawnRotation = rotationOffset* baseSpawnerRotation;
 
-        Instantiate(m_Prefab, spawnPosition, spawnRotation);
+        if(m_Prefab.CompareTag("Ant"))
+        {
+            Instantiate(m_Prefab, spawnPosition, spawnRotation);
+        }
+
+        else
+        {
+            Instantiate(m_Prefab, spawnPosition, Quaternion.identity);
+        }
+        
     }
 
 
