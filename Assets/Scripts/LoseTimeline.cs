@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class LoseTimeline : MonoBehaviour
 {
     public void ResetGame() {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(0);
     }
 }

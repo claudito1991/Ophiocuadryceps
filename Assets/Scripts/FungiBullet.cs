@@ -3,14 +3,9 @@ using UnityEngine;
 
 public class FungiBullet : MonoBehaviour {
     [SerializeField] private float m_LifeSpan = 5;
-
-    private Rigidbody2D rb2d;
+    [SerializeField] private GameObject m_ImpactEffect;
 
     public bool IsDead { get; private set; }
-
-    private void Awake() {
-        rb2d = GetComponent<Rigidbody2D>();
-    }
 
     private void Start() {
         StartCoroutine(AutoDestroy());
@@ -43,7 +38,8 @@ public class FungiBullet : MonoBehaviour {
             var emissionModule = ps.emission;
             emissionModule.enabled = false;
         }
-        
+
+        Instantiate(m_ImpactEffect, transform.position, Quaternion.identity);
         Destroy(gameObject, 0.6f);
     }
 }
