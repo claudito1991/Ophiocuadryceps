@@ -9,10 +9,21 @@ public class WinAndLose : MonoBehaviour {
     private GameObject m_WinText;
 
     [FormerlySerializedAs("loseText")] [SerializeField]
-    private GameObject m_LoseText;
 
+    
+    private GameObject m_LoseText;
+    [SerializeField] private GameObject inGameMenu;
+
+    void Start()
+    {
+        inGameMenu.SetActive(false);
+    }
     private void Update() {
         CheckForZeroInfected();
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            inGameMenu.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -31,6 +42,8 @@ public class WinAndLose : MonoBehaviour {
     }
 
     private void EverythingStop() {
+
+        inGameMenu.SetActive(true);
         var allAnts = GameObject.FindGameObjectsWithTag("Ant");
         foreach (GameObject infectedAnt in allAnts) {
             if (infectedAnt != null) {
