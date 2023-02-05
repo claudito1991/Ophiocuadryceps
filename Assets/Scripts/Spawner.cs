@@ -4,12 +4,15 @@ using Random = UnityEngine.Random;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject m_Prefab;
+    [SerializeField] private float m_InitialDelay;
     [SerializeField] private float m_MinCooldown = 3f;
     [SerializeField] private float m_MaxCooldown = 6f;
     [SerializeField] private float m_AngleVariance = 20f;
     [SerializeField] private float m_SidewaysOffsetRange;
     [SerializeField] private float m_yOffsetToViewport=1.0f;
 
+
+    private float delayTime;
     private float spawnTime;
     private Camera mainCamera;
     private void ResetTimer() {
@@ -18,17 +21,23 @@ public class Spawner : MonoBehaviour
 
     private void Start() {
         mainCamera = Camera.main;
+        delayTime = m_InitialDelay;
         ResetTimer();
     }
 
     private void Update() {
-        spawnTime -= Time.deltaTime;
-
-        if(spawnTime < 0)
-        {
-            ResetTimer();
-            Spawn();
+        if (delayTime > 0) {
+            delayTime -= Time.deltaTime;
+            return;
         }
+
+        if (spawnTime > 0) {
+            spawnTime -= Time.deltaTime;
+            return;
+        }
+
+        ResetTimer();
+        Spawn();
     }
 
     private void Spawn()
