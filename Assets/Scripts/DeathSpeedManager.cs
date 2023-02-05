@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -10,19 +8,12 @@ public class DeathSpeedManager : MonoBehaviour
     [SerializeField] private float m_amountDecreaseModifier;
     private float amountDecrease;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         amountDecrease = 1f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //Debug.Log(FungiMind.GetPossessedAntCount());
-    }
-
-    void OnEnable()
+    private void OnEnable()
     {
         FungiMind.AntAddedToSwarm += AntQuantityTracker;
     }

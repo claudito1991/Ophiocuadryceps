@@ -840,7 +840,7 @@ Transform:
   - {fileID: 6930902578734671469}
   - {fileID: 8316295686084634652}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3602189836942174114
 MonoBehaviour:
@@ -922,8 +922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635cf11cc5180174cbad2d4ce28c7fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinLifespan: 10
-  m_MaxLifespan: 16
+  m_MinLifespan: 14
+  m_MaxLifespan: 18
   m_DestroyEffect: {fileID: 5895084907470125089, guid: 5a62c6106612edd4c838d6bede05a254,
     type: 3}
 --- !u!114 &1747447713
