@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_PH_Tree
+  m_Name: M_BG_Tree
   m_Shader: {fileID: -6465566751694194690, guid: 182ea8e553e18a9479c7874490364ffd,
     type: 3}
   m_Parent: {fileID: 0}
@@ -100,7 +100,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.005
+    - _Parallax: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
