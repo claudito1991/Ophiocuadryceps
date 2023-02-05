@@ -5,8 +5,8 @@ public class WinAndLose : MonoBehaviour {
     [FormerlySerializedAs("antSpawnRig")] [SerializeField]
     private GameObject m_AntSpawnRig;
 
-    [FormerlySerializedAs("winText")] [SerializeField]
-    private GameObject m_WinText;
+    [FormerlySerializedAs("m_WinText")] [FormerlySerializedAs("winText")] [SerializeField]
+    private GameObject m_WinTimeline;
 
     [FormerlySerializedAs("loseText")] [SerializeField]
 
@@ -18,6 +18,7 @@ public class WinAndLose : MonoBehaviour {
     {
         inGameMenu.SetActive(false);
     }
+    
     private void Update() {
         CheckForZeroInfected();
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -32,7 +33,7 @@ public class WinAndLose : MonoBehaviour {
         }
 
         EverythingStop();
-        m_WinText.SetActive(true);
+        m_WinTimeline.SetActive(true);
     }
 
 
