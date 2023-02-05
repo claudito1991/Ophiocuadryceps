@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aed61dc19f722147bf8f34370e27abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shroom: {fileID: 1468281422}
+  m_FungusGraphic: {fileID: 1468281422}
 --- !u!114 &6599479235093832456
 MonoBehaviour:
   m_ObjectHideFlags: 0
