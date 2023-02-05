@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float m_MaxCooldown = 6f;
     [SerializeField] private float m_AngleVariance = 20f;
     [SerializeField] private float m_SidewaysOffsetRange;
+    [SerializeField] private float m_yOffsetToViewport=1.0f;
 
     private float spawnTime;
     private Camera mainCamera;
@@ -37,7 +38,7 @@ public class Spawner : MonoBehaviour
         Vector3 spawnPosition = baseSpawnPosition + positionOffset;
         
         var viewportPosition = mainCamera.WorldToViewportPoint(spawnPosition);
-        viewportPosition.y = Mathf.Max(1.3f, viewportPosition.y);
+        viewportPosition.y = Mathf.Max(m_yOffsetToViewport, viewportPosition.y);
 
         spawnPosition = mainCamera.ViewportToWorldPoint(viewportPosition);
 
