@@ -10,19 +10,19 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float m_SidewaysOffsetRange;
 
     private float spawnTime;
-
+    private Camera mainCamera;
     private void ResetTimer() {
         spawnTime = Random.Range(m_MinCooldown, m_MaxCooldown);
     }
 
     private void Start() {
+        mainCamera = Camera.main;
         ResetTimer();
     }
 
-    private void Update()
-    {
+    private void Update() {
         spawnTime -= Time.deltaTime;
-        
+
         if(spawnTime < 0)
         {
             ResetTimer();
@@ -35,6 +35,11 @@ public class Spawner : MonoBehaviour
         var baseSpawnPosition = transform.position;
         var positionOffset = transform.up * GetRandomPosition();
         Vector3 spawnPosition = baseSpawnPosition + positionOffset;
+        
+        var viewportPosition = mainCamera.WorldToViewportPoint(spawnPosition);
+        viewportPosition.y = Mathf.Max(1.1f, viewportPosition.y);
+
+        spawnPosition = mainCamera.ViewportToWorldPoint(viewportPosition);
 
         Quaternion baseSpawnerRotation = transform.rotation;
         Quaternion rotationOffset = Quaternion.Euler(0, 0, Random.Range(-m_AngleVariance, m_AngleVariance));
