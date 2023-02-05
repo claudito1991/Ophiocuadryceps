@@ -1,27 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.Serialization;
 
-public class WinAndLose : MonoBehaviour
-{
-    [SerializeField] private BoxCollider2D winCollider;
-    [SerializeField] private GameObject antSpawnRig;
-    private GameObject[] infectedAnts;
+public class WinAndLose : MonoBehaviour {
+    [FormerlySerializedAs("antSpawnRig")] [SerializeField]
+    private GameObject m_AntSpawnRig;
 
-    [SerializeField] private GameObject winText;
-    [SerializeField] private GameObject loseText;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [FormerlySerializedAs("winText")] [SerializeField]
+    private GameObject m_WinText;
 
-    // Update is called once per frame
-    void Update()
-    {
+    [FormerlySerializedAs("loseText")] [SerializeField]
+    private GameObject m_LoseText;
+
+    private void Update() {
         CheckForZeroInfected();
     }
 
@@ -29,42 +19,31 @@ public class WinAndLose : MonoBehaviour
         if (!other.CompareTag("Ant") || !other.GetComponent<Ant>().IsPossessed) {
             return;
         }
-        
+
         EverythingStop();
-        winText.SetActive(true);
+        m_WinText.SetActive(true);
     }
 
 
-    private void RemoveControlFromPlayer(GameObject playerObject)
-    {
+    private void RemoveControlFromPlayer(GameObject playerObject) {
         playerObject.GetComponent<AntMovement>().enabled = false;
         playerObject.GetComponent<AntDeath>().enabled = false;
     }
 
-    private void EverythingStop()
-    {
-        infectedAnts = GameObject.FindGameObjectsWithTag("Ant");
-        foreach (GameObject infectedAnt in infectedAnts)
-        {
-        if(infectedAnt != null)
-        {
-            RemoveControlFromPlayer(infectedAnt);
-        }
-        
-                
+    private void EverythingStop() {
+        var allAnts = GameObject.FindGameObjectsWithTag("Ant");
+        foreach (GameObject infectedAnt in allAnts) {
+            if (infectedAnt != null) {
+                RemoveControlFromPlayer(infectedAnt);
+            }
         }
 
-            antSpawnRig.SetActive(false);
-   
+        m_AntSpawnRig.SetActive(false);
     }
 
-    private void CheckForZeroInfected()
-    {
-        if (!FungiMind.HasAnyPossessedAnts())
-        {
-            EverythingStop();
-            loseText.SetActive(true);
-        }
-        
+    private void CheckForZeroInfected() {
+        if (FungiMind.HasAnyPossessedAnts()) return;
+        EverythingStop();
+        m_LoseText.SetActive(true);
     }
 }
