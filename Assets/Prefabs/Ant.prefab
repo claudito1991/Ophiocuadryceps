@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 1610474259013466375}
   - component: {fileID: 1692710313}
   - component: {fileID: 1747447713}
+  - component: {fileID: 6599479235093832456}
   m_Layer: 0
   m_Name: Ant
   m_TagString: Ant
@@ -544,3 +545,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shroom: {fileID: 1468281422}
+--- !u!114 &6599479235093832456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391891329358765631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daaff2bc9d5aaaa4fbbe80b947ddf726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToWaitIfNotConverted: 5

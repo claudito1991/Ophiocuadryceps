@@ -19,7 +19,7 @@ public class AntDeath : MonoBehaviour {
     }
     IEnumerator TimerXD() {
         yield return new WaitForSeconds(Random.Range(m_MinLifespan, m_MaxLifespan));
-        Debug.Log("muerte");
+        //Debug.Log("muerte");
         Destroy(gameObject);
     }
 
@@ -34,7 +34,7 @@ public class AntDeath : MonoBehaviour {
 
     public void ReduceDeathTime(float aumountDecrease)
     {
-        Debug.Log(aumountDecrease);
+        //Debug.Log(aumountDecrease);
         m_MaxLifespan = m_MaxLifespan * aumountDecrease;
         m_MinLifespan = m_MinLifespan * aumountDecrease;
     }
