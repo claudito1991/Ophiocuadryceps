@@ -20,6 +20,10 @@ public class WinAndLose : MonoBehaviour {
     }
     private void Update() {
         CheckForZeroInfected();
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            inGameMenu.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
