@@ -5,7 +5,11 @@ public class FungiShooter : MonoBehaviour {
     [FormerlySerializedAs("bulletFungi")] [SerializeField]
     private GameObject m_BulletPrefab;
 
+    [SerializeField]
+    private float m_Cooldown;
+
     private Camera mainCamera;
+    private float lastShotTime;
 
     private void Start() {
         mainCamera = Camera.main;
@@ -17,7 +21,8 @@ public class FungiShooter : MonoBehaviour {
 
         UpdateLocation();
         
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.JoystickButton0)) {
+            
             Shoot();
         }
     }
@@ -33,10 +38,14 @@ public class FungiShooter : MonoBehaviour {
     }
 
     private void Shoot() {
-        var target = GetProjectedMousePosition();
+        if (HasCooldown()) return;
+
+        lastShotTime = Time.unscaledTime;
+        var target = CrosshairController.GetCrosshairPosition();
         Vector2 shooterPosition = transform.position;
         var direction = (target - shooterPosition).normalized;
         var angle = Mathf.Atan2(direction.y, direction.x);
         Instantiate(m_BulletPrefab, shooterPosition, Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg));
     }
+    private bool HasCooldown() => (Time.unscaledTime - lastShotTime)< m_Cooldown;
 }
