@@ -23,7 +23,7 @@ public class DeathSpeedManager : MonoBehaviour
         if(amountDecrease> 0.2f)
         {
          amountDecrease -= ((FungiMind.GetPossessedAntCount()) * m_amountDecreaseModifier)/100f;
-        Debug.Log("amount " + amountDecrease+ " count " + FungiMind.GetPossessedAntCount());
+        //Debug.Log("amount " + amountDecrease+ " count " + FungiMind.GetPossessedAntCount());
         OnPopulationGrow?.Invoke(amountDecrease);           
         }
         else

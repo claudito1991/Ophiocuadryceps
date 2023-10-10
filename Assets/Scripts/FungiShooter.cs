@@ -45,7 +45,10 @@ public class FungiShooter : MonoBehaviour {
         Vector2 shooterPosition = transform.position;
         var direction = (target - shooterPosition).normalized;
         var angle = Mathf.Atan2(direction.y, direction.x);
-        Instantiate(m_BulletPrefab, shooterPosition, Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg));
+        //Instantiate(m_BulletPrefab, shooterPosition, Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg));
+        GameObject bullet = BulletPooling.Instance.RequestBullet();
+        bullet.transform.position = shooterPosition;
+        bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg);
     }
     private bool HasCooldown() => (Time.unscaledTime - lastShotTime)< m_Cooldown;
 }
