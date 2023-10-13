@@ -38,7 +38,7 @@ public class Ant : MonoBehaviour {
     public void Possess() {
         if (!IsPossessed) {
             IsPossessed = true;
-            antDeath.enabled =true;
+            antDeath.BeginTimer();
             sfx.PlayPossessionSFX();
             FungiMind.RegisterPossessedAnt(this);
         }
